@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,7 +62,20 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				// Custom colors for our price drop theme
+				'price-drop': {
+					'50': '#edf8ff',
+					'100': '#d6edff',
+					'200': '#b5e0ff',
+					'300': '#83d0ff',
+					'400': '#48b8ff',
+					'500': '#1e9bff',
+					'600': '#0079ff',
+					'700': '#0061ff',
+					'800': '#0050d3',
+					'900': '#0b45a8',
+				},
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -84,11 +98,16 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'pulse-fade': {
+					'0%, 100%': { opacity: '1' },
+					'50%': { opacity: '0.6' },
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'pulse-fade': 'pulse-fade 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
 			}
 		}
 	},
