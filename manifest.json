@@ -13,7 +13,8 @@
     }
   },
   "permissions": [
-    "activeTab"
+    "activeTab",
+    "storage"
   ],
   "icons": {
     "16": "public/favicon.ico",

@@ -12,6 +12,17 @@ const Index = () => {
   const [filteredListings, setFilteredListings] = useState(mockListings);
   const [isRefreshing, setIsRefreshing] = useState(false);
 
+  // Load saved category from Chrome storage if available
+  useEffect(() => {
+    if (chrome?.storage?.local) {
+      chrome.storage.local.get(['selectedCategory'], (result) => {
+        if (result.selectedCategory) {
+          setSelectedCategory(result.selectedCategory);
+        }
+      });
+    }
+  }, []);
+
   // Filter listings whenever the selected category changes
   useEffect(() => {
     if (selectedCategory === "All Categories") {
@@ -20,6 +31,11 @@ const Index = () => {
       setFilteredListings(
         mockListings.filter((listing) => listing.category === selectedCategory)
       );
+    }
+
+    // Save selected category to Chrome storage
+    if (chrome?.storage?.local) {
+      chrome.storage.local.set({ selectedCategory });
     }
   }, [selectedCategory]);
 
