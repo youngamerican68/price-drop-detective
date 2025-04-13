@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { CardListing } from "@/components/CardListing";
 import { FilterBar } from "@/components/FilterBar";
 import { EmptyState } from "@/components/EmptyState";
+import { ApiKeyManager } from "@/components/ApiKeyManager";
 import { mockListings } from "@/lib/mockData";
 import { Button } from "@/components/ui/button";
 import { RefreshCw } from "lucide-react";
@@ -93,7 +94,10 @@ const Index = () => {
       </header>
 
       {/* Main Content */}
-      <main className="container mx-auto py-4 px-4">
+      <main className="container mx-auto py-4 px-4 space-y-4">
+        {/* API Key Manager */}
+        <ApiKeyManager />
+
         {/* Statistics */}
         <div className="mb-4 bg-white rounded-lg p-4 shadow-sm border">
           <h2 className="text-sm font-medium text-gray-500 mb-2">

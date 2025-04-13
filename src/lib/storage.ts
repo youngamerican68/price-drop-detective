@@ -24,4 +24,19 @@ const getFromStorage = async (key: string): Promise<any> => {
   }
 };
 
-export { saveToStorage, getFromStorage, isChromeExtension };
+const saveApiKey = (apiKey: string): void => {
+  saveToStorage('ebayApiKey', apiKey);
+};
+
+const getApiKey = async (): Promise<string | null> => {
+  return await getFromStorage('ebayApiKey');
+};
+
+export { 
+  saveToStorage, 
+  getFromStorage, 
+  isChromeExtension, 
+  saveApiKey, 
+  getApiKey 
+};
+
