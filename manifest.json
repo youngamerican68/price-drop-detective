@@ -1,0 +1,23 @@
+
+{
+  "manifest_version": 3,
+  "name": "Price Drop Detective",
+  "version": "1.0",
+  "description": "Track eBay collectible card price drops in real-time",
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": {
+      "16": "public/favicon.ico",
+      "48": "public/favicon.ico",
+      "128": "public/favicon.ico"
+    }
+  },
+  "permissions": [
+    "activeTab"
+  ],
+  "icons": {
+    "16": "public/favicon.ico",
+    "48": "public/favicon.ico",
+    "128": "public/favicon.ico"
+  }
+}
