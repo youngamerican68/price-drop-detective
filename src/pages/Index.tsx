@@ -5,8 +5,7 @@ import { FilterBar } from "@/components/FilterBar";
 import { EmptyState } from "@/components/EmptyState";
 import { mockListings } from "@/lib/mockData";
 import { Button } from "@/components/ui/button";
-import { ArrowPathIcon } from "lucide-react";
-import { Refresh } from "lucide-react";
+import { RefreshCw } from "lucide-react";
 
 const Index = () => {
   const [selectedCategory, setSelectedCategory] = useState("All Categories");
@@ -59,7 +58,7 @@ const Index = () => {
               className="flex items-center gap-1"
               disabled={isRefreshing}
             >
-              <Refresh
+              <RefreshCw
                 size={16}
                 className={isRefreshing ? "animate-spin" : ""}
               />
