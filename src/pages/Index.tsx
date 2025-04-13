@@ -6,21 +6,23 @@ import { EmptyState } from "@/components/EmptyState";
 import { mockListings } from "@/lib/mockData";
 import { Button } from "@/components/ui/button";
 import { RefreshCw } from "lucide-react";
+import { saveToStorage, getFromStorage } from "@/lib/storage";
 
 const Index = () => {
   const [selectedCategory, setSelectedCategory] = useState("All Categories");
   const [filteredListings, setFilteredListings] = useState(mockListings);
   const [isRefreshing, setIsRefreshing] = useState(false);
 
-  // Load saved category from Chrome storage if available
+  // Load saved category from storage if available
   useEffect(() => {
-    if (chrome?.storage?.local) {
-      chrome.storage.local.get(['selectedCategory'], (result) => {
-        if (result.selectedCategory) {
-          setSelectedCategory(result.selectedCategory);
-        }
-      });
-    }
+    const loadSavedCategory = async () => {
+      const savedCategory = await getFromStorage('selectedCategory');
+      if (savedCategory) {
+        setSelectedCategory(savedCategory);
+      }
+    };
+    
+    loadSavedCategory();
   }, []);
 
   // Filter listings whenever the selected category changes
@@ -33,10 +35,8 @@ const Index = () => {
       );
     }
 
-    // Save selected category to Chrome storage
-    if (chrome?.storage?.local) {
-      chrome.storage.local.set({ selectedCategory });
-    }
+    // Save selected category to storage
+    saveToStorage('selectedCategory', selectedCategory);
   }, [selectedCategory]);
 
   // Handle category change
